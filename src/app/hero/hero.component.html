@@ -1,0 +1,109 @@
+<!-- Test การใช้ NgModel -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</head>
+
+<body>
+
+  <div class="container">
+     <!-- ของ profile.ts -->
+
+    <!-- <h2>Shoe List แบบดึงค่ามาแสดง ของ JavaScript</h2>   
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>{{number}}</th>
+          <th>{{name}}</th>
+          <th>{{type}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{Profile.id}}</td>
+          <td>{{Profile.name | uppercase}}</td>
+        </tr>
+        <tr>
+          <td>Mary</td>
+          <td>Moe</td>
+          <td>mary@example.com</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div>
+      <label for="name">Hero name : </label>
+      <input id="name" [ngModel]=" Profile.name" placeholder="Name....">
+    </div> -->
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+  
+<!-- ของ profile-list.ts -->  
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-12">
+        <h2>My Heros</h2>
+        <!-- <ul class="hreros">
+          <li *ngFor="let hero of heros">
+            <span class="badge">{{hero.id}}</span>{{hero.name}}
+          </li>
+        </ul> -->
+    
+        <!-- การใช้ ngfor loop -->
+        <table class="table table-hover hreros">
+          <thead>
+            <tr>
+              <!-- <th>ID</th> -->
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- let hero of heros 
+              คือ นำตัวแปร heros ที่ประกาศไว้ในไฟล์ hero.component มา rename เป็นคำว่า hero 
+              และทำการใช้คำว่า hero เรียกใช้ค่าต่างๆและนำมาวน Loop
+            -->
+            <!-- [class.selected]="hero === selectedHero"  คือ CSS Class -->
+            <!-- (click)="onSelect(hero)" คือการ click แล้วจะเข้า event ngIf ด้านล่าง -->
+            <tr *ngFor="let hero of heros" 
+                [class.selected]="hero === selectedHero" 
+                (click)="onSelect(hero)"
+            >
+              <!-- <td>{{hero.id}}</td> -->
+              <td>{{hero.name | uppercase}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <!-- -------------------------------------------------------------------------- -->
+      <div class="col-md-6 col-sm-12 col-12">
+        <div *ngIf="selectedHero">
+
+          <h2>{{selectedHero.name | uppercase}} --> Details</h2>
+          <div><span>id : </span>{{selectedHero.id}}</div>
+          <hr>
+          <div>
+            <label for="hero-name">Hero name : </label>
+            <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name...">
+            <hr>
+            <label for="hero-type">Hero type : </label>
+            <input id="hero-type" [(ngModel)]="selectedHero.type" placeholder="type...">
+            <hr>
+            <label for="hero-belong-to">Belong to : </label>
+            <input id="hero-belong-to" [(ngModel)]="selectedHero.belong_to" placeholder="belong to...">
+            <!-- <p>{{selectedHero.name | uppercase}}</p> -->
+          </div>
+        
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
